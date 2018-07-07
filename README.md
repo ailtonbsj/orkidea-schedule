@@ -2,6 +2,11 @@
 
 > A responsive plugin to show time intervals in a schedule of activities.
 
+## Demo
+
+[Click here to see the demo!](https://rawgit.com/ailtonbsj/orkidea-schedule/master/index.html)
+
+
 ## Install
 
 ### yarn
