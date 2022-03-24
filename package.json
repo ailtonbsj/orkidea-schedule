@@ -1,11 +1,11 @@
 {
   "name": "orkidea-schedule",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A responsive plugin to show time intervals in a schedule of activities.",
   "main": "scheduler.js",
   "scripts": {
-  	"dist-js" : "./node_modules/.bin/node-minify --compressor all --input 'schedule.js' --output 'schedule.min.js'",
-  	"dist-css" : "./node_modules/.bin/node-minify --compressor clean-css --input 'schedule.css' --output 'schedule.min.css'",
+    "dist-js": "./node_modules/.bin/node-minify --compressor all --input 'schedule.js' --output 'schedule.min.js'",
+    "dist-css": "./node_modules/.bin/node-minify --compressor clean-css --input 'schedule.css' --output 'schedule.min.css'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

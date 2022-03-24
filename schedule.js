@@ -16,11 +16,47 @@ function Schedule(domId, data, config){
 	self.listYLabels = [];
 	self.listXLabels = [];
 	configs = config;
-	data.map(function(item){
+	var pures = [];
+	data.map(function(item) {
+		var initDate = item.inittime.split(' ')[0];
+		var finalDate = item.finaltime.split(' ')[0];
+		if(initDate != finalDate) {
+			var iniArr = initDate.split('/');
+			var endArr = finalDate.split('/');
+			var sDate = new Date(iniArr[2],iniArr[1]-1,iniArr[0]);
+			var eDate = new Date(endArr[2],endArr[1]-1,endArr[0]);
+			var diffTime = eDate - sDate;
+			var daysDiff = diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+			for(var i = 0; i <= daysDiff; i++) {
+				var iDate = new Date(sDate.getTime());
+				iDate.setDate(iDate.getDate() + i);
+				var strDate = iDate.toLocaleDateString("pt-BR");
+				if(i == 0) {
+					iniFrag = strDate + ' ' + item.inittime.split(' ')[1];
+					endFrag = strDate + ' 23:59:59';
+				} else if(i == daysDiff) {
+					iniFrag = strDate + ' 00:00:00';
+					endFrag = strDate + ' ' + item.finaltime.split(' ')[1];
+				} else {
+					iniFrag = strDate + ' 00:00:00';
+					endFrag = strDate + ' 23:59:59';
+				}
+				obj = {
+					finaltime: endFrag,
+					inittime: iniFrag,
+					text: item.text,
+					yAxis: item.yAxis
+				};
+				pures.push(obj);
+			}
+		} else pures.push(item);
+	});
+
+	pures.map(function(item){
 		var initDate = item.inittime.split(' ')[0];
 		var finalDate = item.finaltime.split(' ')[0];
 		if(initDate != finalDate)
-			console.warn('This component does not suport interval major than one day!');
+			console.warn('This component does not support interval major than one day!');
 		if(self.listDates[initDate] == undefined){
 			self.listDates[initDate] = [];
 			self.listDates[initDate].push(item);
