@@ -1,6 +1,6 @@
 {
   "name": "orkidea-schedule",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A responsive plugin to show time intervals in a schedule of activities.",
   "main": "scheduler.js",
   "scripts": {

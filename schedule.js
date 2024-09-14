@@ -153,6 +153,9 @@ $Schedule.createItem = function(value, x, y, w, bgColor, parent){
 	} else node.style.background = configs.uniqueColor;
 	node.style.overflow = 'hidden';
 	node.setAttribute('title',value);
+	node.innerHTML = value.split("\n")[0];
+	console.log();
+	
 	node.classList.add("orkidea-schedule-item");
 	parent.appendChild(node);
 	node.onclick = function(){
@@ -160,8 +163,8 @@ $Schedule.createItem = function(value, x, y, w, bgColor, parent){
 	};
 }
 $Schedule.createXLabel = function(parent, value, left){
-	var node = document.createElement("div"	);
-	node.innerHTML = value;
+	var node = document.createElement("div"	);	
+	node.innerHTML = value.length === 2 ? '0' + value : value;
 	node.style.left = left+'px';
 	node.style.width = hourDist + 'px';
 	parent.appendChild(node);
